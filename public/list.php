@@ -13,22 +13,38 @@ $offset = ($page-1) * 5; //*le nombre de résultats par page
     $offset =0;
 }
 
-//Requête permettant de récupérer tous les étudiants, et les stocker dans un array
+//Récupération du terme rechercher dans le barre de recherche
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+//Si recherche, ma requête effectue une rehcerche et ne fait pas de pagination
+if (!empty($search)){
+  $sql='SELECT *
+        FROM student
+        WHERE stu_lastname LIKE "%:search%"
+        OR stu_firstname LIKE :search
+        OR stu_email LIKE :search
+  ';
+  $pdoStatement = $pdo->prepare($sql); /* on effectue un prépare pour sécuriser la recherche et éviter une injection sql*/
+  $pdoStatement->bindValue(':search', '%'.$search.'%'); /* étant donné un prépare, il doit y avoir un bindValue*/
+  $pdoStatement->execute(); /*après la préparation on execute*/
+}else{
+  //SI pas de recherche, on fait une Requête permettant de récupérer tous les étudiants et faire une pagination
   $sql =" SELECT *
-  	      FROM student
-          LIMIT 5 OFFSET $offset /*détermine le nombre de résultats ainsi que le nombre de page de décalage à la page suivante */
+  FROM student
+  LIMIT 5 OFFSET $offset /*détermine le nombre de résultats ainsi que le nombre de page de décalage à la page suivante */
   ";
-    // Execution de la requete
-  $pdoStatement = $pdo->query($sql);
+  $pdoStatement = $pdo->query($sql); /* Execution de la requete*/
+}
 
-    // Si erreur
-  if ($pdoStatement === false) {
-  	print_r($pdo->errorInfo());
-  	exit;
-  }
 
-    // Je récupère tous les résultats
-  $student = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+// Si erreur lors de l'éxécution
+if ($pdoStatement === false) {
+	print_r($pdo->errorInfo());
+	exit;
+}
+
+// Je récupère tous les résultats
+$student = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
 
 

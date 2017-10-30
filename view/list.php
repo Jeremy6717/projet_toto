@@ -19,8 +19,8 @@
       <th scope="row"><?php echo $row['stu_id']; ?></th> <!-- j'affiche la valeur de l'index voulue, ici on a nommé une variable $row  -->
       <td><?php echo $row['stu_lastname']; ?> </td>
       <td><?php echo $row['stu_firstname']; ?> </td>
-      <td><?php echo $row['stu_birthdate']; ?> </td>
       <td><?php echo $row['stu_email']; ?> </td>
+      <td><?php echo $row['stu_birthdate']; ?> </td>
       <td><a  class="btn btn-info" href="student.php?id=<?php echo $row['stu_id']?>"> Détails </a></td>
     </tr>
     <?php endforeach ?>

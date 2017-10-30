@@ -21,14 +21,21 @@
         <a class="nav-link" href="index.php">Toutes les sessions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="list.php">Toutes les étudiants</a>
+        <a class="nav-link" href="list.php">Tout les étudiants</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="add.php">Ajout d'un étudiant</a>
       </li>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <li class="nav-item">
+        <a class="nav-link" href="signIN.php">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="signUP.php">Sign up</a>
+      </li>
+    <form method="get" action="list.php" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" name="search" <?php if(!empty ($search))
+      echo $search  ?>/>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
     </form>
   </div>
 </nav>
