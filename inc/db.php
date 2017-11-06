@@ -11,3 +11,7 @@ try {
 catch (Exception $e) {
 	echo 'Connexion échouée : '.$e->getMessage();
 }
+
+
+// Génère automatiquement une exception si erreur dans la requete
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

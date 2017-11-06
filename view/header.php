@@ -32,6 +32,9 @@
       <li class="nav-item">
         <a class="nav-link" href="signUP.php">Sign up</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="upload.php">Upload</a>
+      </li>
     <form method="get" action="list.php" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" name="search" <?php if(!empty ($search))
       echo $search  ?>/>
