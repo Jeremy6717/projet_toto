@@ -3,6 +3,7 @@
     <title> 1er projet php : projet toto </title>
   <!-- CDN bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Menu -->
@@ -27,13 +28,13 @@
         <a class="nav-link" href="add.php">Ajout d'un étudiant</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="signIN.php">Sign in</a>
+            <a class="nav-link" href="upload.php">Upload</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="signUP.php">Sign up</a>
+            <a class="nav-link" href="sign_up.php">Sign up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="upload.php">Upload</a>
+        <a class="nav-link" href="sign_in.php">Sign in</a>
       </li>
     <form method="get" action="list.php" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" name="search" <?php if(!empty ($search))

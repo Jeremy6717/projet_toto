@@ -29,7 +29,7 @@
 
 <!-- navigation en bas de page (préc-1-2-3-suiv) -->
 
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" class="pagination">
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="list.php?page=<?php echo $page-1 ?>" >Précédent</a></li> <!-- faire un echo de la variable contenant l'url de la page et lui enlever -1 -->
 <!-- <li class="page-item"><a class="page-link" href="list.php?page=1">1</a></li>

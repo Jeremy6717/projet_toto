@@ -1,4 +1,3 @@
-<pre>
 <?php
 
 //inclusion du fichier config
@@ -136,5 +135,3 @@ if (!empty($_POST)){
 
 
 ?>
-
-</pre>

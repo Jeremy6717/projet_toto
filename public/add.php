@@ -1,5 +1,11 @@
 <?php
 
+//Démarrage de la session
+session_start();
+
+
+
+
 //inclusion du fichier config
 require_once __DIR__.'/../inc/config.php';
 
@@ -71,7 +77,7 @@ if(!empty($_POST))
   /*  traitement des données
     *****************************************/
   $ajoutPrenom = trim(strip_tags($ajoutPrenom));   //trim — Supprime les espaces (ou d'autres caractères) en début et fin de chaîne
-  $ajoutNom = trim(strip_tags($ajoutPrenom));     //strip_tags — Supprime les balises HTML et PHP d'une chaîne
+  $ajoutNom = trim(strip_tags($ajoutNom));     //strip_tags — Supprime les balises HTML et PHP d'une chaîne
   $ajoutEmail = trim(strip_tags($ajoutEmail));
   $ajoutDateNaissance = trim(strip_tags($ajoutDateNaissance));
 
@@ -104,17 +110,18 @@ if(!empty($_POST))
     $formOk = false;
   }
 
+  if (filter_var($ajoutEmail, FILTER_VALIDATE_EMAIL)=== false) {
+        echo 'Cet email a un format non adapté.';
+        $formOk = false;
+ }
+
   // La date de naissance est-elle remplie ?
-  if(empty($ajoutEmail)){
+  if(empty($ajoutDateNaissance)){
     echo 'Veuillez indiquer votre date de naissance svp';
     $formOk = false;
   }
 
 
-  if (filter_var($ajoutEmail, FILTER_VALIDATE_EMAIL)=== false) {
-    echo 'Cet email a un format non adapté.';
-    $formOk = false;
-  }
 
 
   // Si aucune erreur
@@ -130,9 +137,6 @@ if(!empty($_POST))
 	}
 
 }
-
-
-
 
 
 

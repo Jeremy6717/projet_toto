@@ -1,4 +1,4 @@
-<form>
+<form class="form">
   <div class="form-row">
     <div class="col">
       <label for="inputEmail4">Prénom</label>
@@ -25,7 +25,7 @@
     <select  name="session" class="form-control">
       <option selected placeholder="sélectionner"> </option>
       <?php foreach ($listeSession as $index => $info) :?> <!-- On parcour le tableau $studentInfo qui est dans le fichier student.php dans le dossier public -->
-      <option value="<?php echo $info['ses_id'] ?>"><?php echo $info['ses_number']. $info['tra_name'] ?>></option>
+      <option value="<?php echo $info['ses_id']?>"><?php echo $info['ses_number']. $info['tra_name'] ?>></option>
       <?php endforeach ?>
     </select>
   </div>
