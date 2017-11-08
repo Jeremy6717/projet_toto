@@ -1,7 +1,5 @@
 <?php
 
-//Démarrage de la session
-session_start();
 
 
 
@@ -13,6 +11,7 @@ require_once __DIR__.'/../inc/config.php';
 // Initialisations
 $checkEmail = '';
 $checkPassword = '';
+$successList = array();
 
 
 /*  Vérification des données
@@ -61,11 +60,11 @@ if(!empty($_POST))
             $loginOkBd = true;
 
             // On stock l'email dans une variable
-            $emailDb = "SELECT usr_email, usr_password
+            $sql = "SELECT usr_email, usr_password, usr_id, usr_role
                         FROM `user`
                         WHERE usr_email = :idEmail";
 
-            $pdostatement = $pdo->prepare( $emailDb);
+            $pdostatement = $pdo->prepare( $sql);
             $pdostatement -> bindValue(':idEmail', $checkEmail, PDO::PARAM_STR);
 
             $pdostatement -> execute();
@@ -80,32 +79,27 @@ if(!empty($_POST))
                   $hash = $result['usr_password'];
                   //print_r($hash);
 
+
                   // On vérifie le MDP entré par l'utilisateur et celui dand la DB
                   if (password_verify($checkPassword, $hash)) {
                         echo 'Le mot de passe est valide ! <br>';
+                        // On affiche au visiteur les données suivantes
+                        $successList[] = 'User connecté !!!!';
+				$successList[] = 'UserID = '.$result['usr_id'];
+				$successList[] = 'IP = '.$_SERVER['REMOTE_ADDR'];
+                        //on met en session l'ID du visiteur si il peut se connecter et ensuite afficher dans le header le bouton déconnexion
+                        $_SESSION["ID"] = $result['usr_id'];
+                        $_SESSION["Role"] = $result['usr_role'];
+                        $_SESSION["Email"] = $result['usr_email'];
+                        $_SESSION["IP"] = $_SERVER['REMOTE_ADDR'];
+
                   } else {
                         echo 'Le mot de passe est invalide <br>';
                         $loginOkBd = false;
                   }
             }
-
-
-            if($loginOkBd = true){
-                  $userId='SELECT usr_id
-                         FROM user';
-
-                  echo '$userId';
-            }
-
-
-
-
       }
-
-
 }
-
-
 
 // A la fin, j'affiche
 require_once __DIR__.'/../view/header.php';

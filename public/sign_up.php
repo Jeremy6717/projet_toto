@@ -1,17 +1,5 @@
 <?php
 
-//Démarrage de la session
-session_start();
-
-
-// Création de variables de session dans $_SESSION
-//$_SESSION['prenom'] = '';
-//$_SESSION['nom'] = '';
-
-
-
-//setcookie('pseudo', 'M@teo21', time() + 365*24*3600, null, null, false, true);
-
 
 //inclusion du fichier config
 require_once __DIR__.'/../inc/config.php';

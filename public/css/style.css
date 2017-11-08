@@ -15,7 +15,7 @@
     margin-bottom: 1rem;
     background-color: transparent;
     width: 80%;
-    margin-left: 20%;
+    margin-left: 25%;
 }
 
 
@@ -35,4 +35,27 @@
 
 #footerContent{
       text-align: center;
+}
+
+
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-color : transparent;
+}
+
+
+#option403{
+      margin-left: 25%;
+}
+
+
+@media (min-width: 1200px){
+      .error{
+          margin-left: 24rem;
+      }
 }

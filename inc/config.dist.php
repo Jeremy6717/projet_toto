@@ -1,6 +1,7 @@
 <?php
 
 
+
 // Données de configuration
 $config= array(
   'DB_HOST' => '',

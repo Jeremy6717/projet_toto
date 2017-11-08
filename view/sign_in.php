@@ -1,3 +1,10 @@
+<?php if (!empty($successList)) : ?>
+<div class="alert alert-success">
+	<?= join('<br>', $successList); ?>
+</div>
+<?php endif; ?>
+
+
 <form action="" method="post" enctype="multipart/form-data" class="form">
       <fieldset>
         <input type="hidden" name="submitFile" value="1"/>
@@ -12,5 +19,8 @@
           </div>
         </div>
          <button type="submit" class="btn btn-primary">Se connecter</button>
+	   <br>
+	   </br>
+	   <a type="submit" class="btn btn-secondary" href="forgotPassword.php">Mot de passe oublié</a>
       </fieldset>
  </form>

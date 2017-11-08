@@ -1,13 +1,22 @@
 <?php
 
-//Démarrage de la session
-session_start();
-
-
-
 
 //inclusion du fichier config
 require_once __DIR__.'/../inc/config.php';
+
+
+// On essaie de déterminer si la personne peut avoir accès à la page
+if (empty($_SESSION["ID"]){
+      // redirige vers la page 403
+      header('Location: 403.php');
+        exit();
+}elseif ($_SESSION["Role"] !== 'admin') {
+      // redirige vers la page 403
+      header('Location: 403.php');
+        exit();
+}
+
+
 
 
 
