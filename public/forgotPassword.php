@@ -26,6 +26,33 @@ if(!empty($_POST))
     *****************************************/
   $forgotPassword = trim(strip_tags( $forgotPassword ));   //trim — Supprime les espaces (ou d'autres caractères) en début et fin de chaîne
 
+  /*  validation des données
+    *****************************************/
+  $formOk = true;
+
+  // L'email est-il rempli ?
+  if(empty($checkEmail)){
+        echo 'Veuillez indiquer votre email svp <br>';
+        $formOk = false;
+  }else if (filter_var($checkEmail, FILTER_VALIDATE_EMAIL)=== false) { // Email format adpaté ?
+      echo 'Cet email a un format non adapté <br>';
+      $formOk = false;
+  }
+
+
+  // Si aucune erreur de conditions
+     if ($formOk) {
+
+           // On fait une requête pour récupérer l'id de l'utilisateur
+           $sql = "INSERT INTO usr_id
+                        FROM `user`
+                        WHERE usr_email = :idEmail";
+
+           $pdostatement = $pdo->prepare( $sql);
+           $pdostatement -> bindValue(':idEmail', $checkEmail, PDO::PARAM_STR);
+
+           $pdostatement -> execute();
+
 
 
 
